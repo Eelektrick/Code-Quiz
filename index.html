@@ -11,6 +11,31 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   </head>
   <body>
+
+    <!-- header with link to top scores and the countdown timer -->
+    <header>
+      <a href="#" class="ml-4 text-danger font-weight-bold">View High Scores</a>
+      <span id="timer" class="float-right mr-4 font-weight-bold">Time: 0</span>
+    </header>
+
+    <!-- container with explaination and button to start -->
+    <div class="container">
+      <div class="row justify-content-center mt-5 pt-5 ">
+        <h1>Javascript Coding Quiz</h1>
+        <div class="col-md-12 text-center pt-4">
+          <p>
+            Try to answer the following questions about coding in Javascript in 75 seconds.<br> 
+            Your score will be determined based on time left over and how many questions were answered correctly.<br>
+            <strong>NOTE:</strong> if you get an incorrect answer, you will lose 10 seconds!
+          </p>
+          <button type="button" id="startBtn" class="btn btn-outline-danger btn-lg">START QUIZ</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Q&A portion after clicking start -->
+
+    <!-- Finished screen to show final score and enter initials to save top score -->
       
     <!-- Optional JavaScript -->
     <script src="assets/quiz.js"></script>
