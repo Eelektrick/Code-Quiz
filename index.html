@@ -34,8 +34,34 @@
     </div>
 
     <!-- Q&A portion after clicking start -->
+    <div class="container d-none" id="quiz"> <!-- add d-none to class after done with finished screen -->
+      <div class="row justify-content-center mt-5 pt-5">
+        <div class="col-md-12 pt-4" id="questionBlock">
+          <h1 id="questions" class="mb-5 text-center">Questions</h1>
+          <ul id="answers" class="list-unstyled font-weight-bold">
+            <li class="choiceAnswer mb-3">1.</li>
+            <li class="choiceAnswer mb-3">2.</li>
+            <li class="choiceAnswer mb-3">3.</li>
+            <li class="choiceAnswer">4.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
     <!-- Finished screen to show final score and enter initials to save top score -->
+    <div class="container d-none" id="submitScore"> <!-- add d-none to class after done with finished screen -->
+      <div class="row justify-content-center mt-5 pt-5">
+        <div class="col-md-12 pt-4 text-center">
+          <h1>ALL DONE!</h1>
+          <p id="userScore " class="font-weight-bold">Your Final Score is:</p>
+          <form class="form-group">
+            <label for=""></label>
+            <input type="text">
+            <button type="button" id="submitBtn" class="btn btn-outline-danger btn-lg">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
       
     <!-- Optional JavaScript -->
     <script src="assets/quiz.js"></script>
