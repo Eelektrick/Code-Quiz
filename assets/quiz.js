@@ -6,10 +6,9 @@ var userScore = document.getElementById("userScore");
 var questionBody = document.getElementById("questions");
 var answers = document.getElementById("answers");
 var submitScore = document.querySelector("#submitScore");
-
-var questionNumber = -1;
+var questionNumber = 0;
 var answer;
-var index = 0;
+var secondsLeft = 75;
 
 // Start the quiz with a click of the start quiz button
 startBtn.addEventListener("click", startQuiz);
@@ -57,7 +56,6 @@ var questions = [
 
 // countdown timer in seconds and ending when timer hits 0.
 function timer(){
-    var secondsLeft = 75;
 
     var timerInterval = setInterval(function(){
     timerEl.textContent = "Time: " + secondsLeft;
@@ -65,7 +63,6 @@ function timer(){
 
     if(secondsLeft === 0){
         clearInterval(timerInterval);
-        finalResults();
     }
 
     },1000);
@@ -89,9 +86,28 @@ function makeQuestions(){
     }
 }
 
-// finalResults(){
+//answering the questions and moving to next question
+answers.addEventListener("click", function(event){
+    var pResult = document.getElementById ("result");
+    pResult.removeAttribute("style");
 
-// }
+    if(answer === event.target.textContent){
+        pResult.innerHTML = "Correct!";
+        setTimeout(hideResult,1000);
+    }
+    else{
+        pResult.innerHTML = "Sorry, that is incorrect!";
+        secondsLeft -= 10;
+        setTimeout(hideResult,1000);
+    }
+    makeQuestions();
+});
+
+//function to hide the reply if you are correct or wrong
+function hideResult(){
+    var pResult = document.getElementById ("result");
+    pResult.style.display = "none";
+}
 
 // what happens when you click an answer
 // timer starts(run timer after first click to start)
