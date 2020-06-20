@@ -9,6 +9,7 @@ var submitScore = document.querySelector("#submitScore");
 var quiz = document.getElementById("quiz");
 var home = document.getElementById("home");
 var finalScore = document.getElementById("submitScore");
+var initialsInput = document.querySelector("#initials");
 var questionNumber = -1;
 var answerChoice;
 var secondsLeft = 50;
@@ -120,7 +121,23 @@ function finalResults(){
     userScore.innerHTML = "Final Score: " + secondsLeft;
 }
 
-// what happens when you click an answer
-// timer starts(run timer after first click to start)
+//submit button to store initials and highscore
+submitBtn.addEventListener("click", function(e){
+    e.preventDefault();
 
-//store top score with initials in storage
+    //create user object for submission
+    var newScore = {
+        initials: initialsInput.value,
+        score: secondsLeft
+    };
+
+    //check if there is scores already in local storage if not clear it
+    var highScores = JSON.parse(localStorage.getItem("highScores") || "[]");
+
+    //push object into the score array
+    highScores.push(newScore);
+
+    //set new submission
+    console.log(newScore);
+    localStorage.setItem("highScores",JSON.stringify(highScores));
+});
