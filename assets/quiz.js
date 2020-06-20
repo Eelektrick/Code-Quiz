@@ -6,9 +6,12 @@ var userScore = document.getElementById("userScore");
 var questionBody = document.getElementById("questions");
 var answers = document.getElementById("answers");
 var submitScore = document.querySelector("#submitScore");
-var questionNumber = 0;
-var answer;
-var secondsLeft = 75;
+var quiz = document.getElementById("quiz");
+var home = document.getElementById("home");
+var finalScore = document.getElementById("submitScore");
+var questionNumber = -1;
+var answerChoice;
+var secondsLeft = 50;
 
 // Start the quiz with a click of the start quiz button
 startBtn.addEventListener("click", startQuiz);
@@ -16,8 +19,8 @@ startBtn.addEventListener("click", startQuiz);
 //function that operates the entire quiz
 function startQuiz(){
     //swap welcome message to the quiz
-    document.getElementById("home").classList.add("d-none");
-    document.getElementById("quiz").classList.remove("d-none");
+    home.classList.add("d-none");
+    quiz.classList.remove("d-none");
 
     //timer begins at 75 seconds
     timer();
@@ -61,8 +64,9 @@ function timer(){
     timerEl.textContent = "Time: " + secondsLeft;
     secondsLeft--;
 
-    if(secondsLeft === 0){
+    if(secondsLeft === 0 || questionNumber === questions.length){
         clearInterval(timerInterval);
+        finalResults();
     }
 
     },1000);
@@ -71,9 +75,9 @@ function timer(){
 // make questions appear when hitting the start button
 function makeQuestions(){
     questionNumber++;
-    answer = questions[questionNumber].answer;
+    answerChoice = questions[questionNumber].answer;
 
-    questionBody.textContent = questions[questionNumber].title;
+    questionBody.innerHTML = questions[questionNumber].title;
     answers.innerHTML = "";
 
     var option = questions[questionNumber].options;
@@ -91,7 +95,7 @@ answers.addEventListener("click", function(event){
     var pResult = document.getElementById ("result");
     pResult.removeAttribute("style");
 
-    if(answer === event.target.textContent){
+    if(answerChoice === event.target.textContent){
         pResult.innerHTML = "Correct!";
         setTimeout(hideResult,1000);
     }
@@ -107,6 +111,13 @@ answers.addEventListener("click", function(event){
 function hideResult(){
     var pResult = document.getElementById ("result");
     pResult.style.display = "none";
+}
+
+//after quiz is done, show the final reults page with an choice to add intials and save to highscores
+function finalResults(){
+    quiz.classList.add("d-none");
+    finalScore.classList.remove("d-none");
+    userScore.innerHTML = "Final Score: " + secondsLeft;
 }
 
 // what happens when you click an answer
