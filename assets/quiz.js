@@ -10,6 +10,7 @@ var quiz = document.getElementById("quiz");
 var home = document.getElementById("home");
 var finalScore = document.getElementById("submitScore");
 var initialsInput = document.querySelector("#initials");
+var highScoreDisplay = document.getElementById("highScoresList");
 var questionNumber = -1;
 var answerChoice;
 var secondsLeft = 50;
@@ -125,6 +126,49 @@ function finalResults(){
 submitBtn.addEventListener("click", function(e){
     e.preventDefault();
 
+    addScore();
+
+    var highScores = JSON.parse(localStorage.getItem("highScores") || "[]");
+
+
+    for(var i = 0; i< highScores.length; i++){
+        var newLi = document.createElement("li");
+    
+        newLi.textContent = highScores[i].initials + " - " + highScores[i].score;
+        highScoreDisplay.appendChild(newLi);
+    }
+    
+    // click handlers for restart and clearing scoreboard
+    document.getElementById("clearBtn").addEventListener("click", function () {
+        event.preventDefault();
+        localStorage.clear();
+    });
+    
+    document.getElementById("goBackBtn").addEventListener("click", function () {
+        event.preventDefault();
+        window.location.reload();
+    });
+});
+
+// for(var i = 0; i< highScores.length; i++){
+//     var newLi = document.createElement("li");
+
+//     newLi.textContent = highScores[i].initials + " - " + highScores[i].score;
+//     highScoreDisplay.appendChild(newLi);
+// }
+
+// // click handlers for restart and clearing scoreboard
+// document.getElementById("clearBtn").addEventListener("click", function () {
+//     event.preventDefault();
+//     localStorage.clear();
+// });
+
+// document.getElementById("goBackBtn").addEventListener("click", function () {
+//     event.preventDefault();
+//     window.location.reload();
+// });
+
+function addScore(){
     //create user object for submission
     var newScore = {
         initials: initialsInput.value,
@@ -143,4 +187,13 @@ submitBtn.addEventListener("click", function(e){
 
     finalScore.classList.add("d-none");
     document.getElementById("highScores").classList.remove("d-none");
+    console.log(highScores);
+}
+
+//click on view high scores in top left corner
+document.getElementById("viewScores").addEventListener("click", function(e){
+    e.preventDefault();
+
+    home.classList.add("d-none");
+    addScore();
 });
