@@ -12,7 +12,7 @@ This is my password generator that operates after I added javascript to the webp
 
 ## Link to the website
 
-My live deployment of this password generator is located here <>
+My live deployment of this password generator is located here <https://eelektrick.github.io/Code-Quiz/>
 
 ## My Journey with javescript for the password generator
 
