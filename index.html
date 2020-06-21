@@ -34,7 +34,7 @@
     </div>
 
     <!-- Q&A portion after clicking start -->
-    <div class="container d-none" id="quiz"> <!-- add d-none to class after done with finished screen -->
+    <div class="container d-none" id="quiz">
       <div class="row justify-content-center mt-5 pt-5">
         <div class="col-md-12 pt-4" id="questionBlock">
           <h1 id="questions" class="mb-5 text-center">Questions</h1>
@@ -50,7 +50,7 @@
     </div>
 
     <!-- Finished screen to show final score and enter initials to save top score -->
-    <div class="container d-none" id="submitScore"> <!-- add d-none to class after done with finished screen -->
+    <div class="container d-none" id="submitScore">
       <div class="row justify-content-center mt-5 pt-5">
         <div class="col-md-12 pt-4 text-center">
           <h1>ALL DONE!</h1>
@@ -60,6 +60,18 @@
             <input type="text" id="initials">
             <button type="button" id="submitBtn" class="btn btn-outline-danger btn-lg">Submit</button>
           </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- High scores list with a clear and go back button -->
+    <div class="container d-none" id="highScores">
+      <div class="row justify-content-center mt-5 pt-5">
+        <div class="col-md-12 pt-4 text-center">
+          <h1 id="ScoresTitle">High Scores!</h1>
+          <ol id="highScoresList class mb-4"></ol>
+          <button type="button" id="clearBtn" class="btn btn-outline-danger btn-lg">clear</button>
+          <button type="button" id="goBackBtn" class="btn btn-outline-danger btn-lg">Go Back</button>
         </div>
       </div>
     </div>

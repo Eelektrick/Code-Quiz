@@ -140,4 +140,7 @@ submitBtn.addEventListener("click", function(e){
     //set new submission
     console.log(newScore);
     localStorage.setItem("highScores",JSON.stringify(highScores));
+
+    finalScore.classList.add("d-none");
+    document.getElementById("highScores").classList.remove("d-none");
 });
