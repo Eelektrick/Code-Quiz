@@ -11,6 +11,7 @@ var home = document.getElementById("home");
 var finalScore = document.getElementById("submitScore");
 var initialsInput = document.querySelector("#initials");
 var highScoreDisplay = document.getElementById("highScoresList");
+var highScores = JSON.parse(localStorage.getItem("highScores") || "[]");
 var questionNumber = -1;
 var answerChoice;
 var secondsLeft = 50;
@@ -128,14 +129,18 @@ submitBtn.addEventListener("click", function(e){
 
     addScore();
 
-    var highScores = JSON.parse(localStorage.getItem("highScores") || "[]");
+    list();
+});
 
-
+function list(){
     for(var i = 0; i< highScores.length; i++){
-        var newLi = document.createElement("li");
-    
+        var newLi = document.createElement("li")
+        console.log(highScores)
         newLi.textContent = highScores[i].initials + " - " + highScores[i].score;
-        highScoreDisplay.appendChild(newLi);
+        document.getElementById("scoreList").appendChild(newLi);
+
+        //newLi.textContent = highScores[i].initials + " - " + highScores[i].score
+        //document.getElementById("scores").append(highScores[i].initials + " - " + highScores[i].score);
     }
     
     // click handlers for restart and clearing scoreboard
@@ -148,25 +153,7 @@ submitBtn.addEventListener("click", function(e){
         event.preventDefault();
         window.location.reload();
     });
-});
-
-// for(var i = 0; i< highScores.length; i++){
-//     var newLi = document.createElement("li");
-
-//     newLi.textContent = highScores[i].initials + " - " + highScores[i].score;
-//     highScoreDisplay.appendChild(newLi);
-// }
-
-// // click handlers for restart and clearing scoreboard
-// document.getElementById("clearBtn").addEventListener("click", function () {
-//     event.preventDefault();
-//     localStorage.clear();
-// });
-
-// document.getElementById("goBackBtn").addEventListener("click", function () {
-//     event.preventDefault();
-//     window.location.reload();
-// });
+}
 
 function addScore(){
     //create user object for submission
@@ -176,18 +163,16 @@ function addScore(){
     };
 
     //check if there is scores already in local storage if not clear it
-    var highScores = JSON.parse(localStorage.getItem("highScores") || "[]");
+    highScores;
 
     //push object into the score array
     highScores.push(newScore);
 
     //set new submission
-    console.log(newScore);
     localStorage.setItem("highScores",JSON.stringify(highScores));
 
     finalScore.classList.add("d-none");
     document.getElementById("highScores").classList.remove("d-none");
-    console.log(highScores);
 }
 
 //click on view high scores in top left corner

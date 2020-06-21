@@ -2,3 +2,8 @@
 .choiceAnswer:hover{
     background-color: rgb(212, 28, 28);
 }
+
+/* no numbers with list */
+#scoreList{
+    list-style-type:none;
+}
