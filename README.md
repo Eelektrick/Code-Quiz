@@ -1,12 +1,12 @@
 # Code-Quiz
 
-![Screen shot of code-quiz](images/mainPage.PNG)
+![Screen shot of code-quiz](assets/images/mainPage.PNG)
 
-![Screen shot of code-quiz with questions](images/question.PNG)
+![Screen shot of code-quiz with questions](assets/images/question.PNG)
 
-![Screen shot of code-quiz with results](images/scores.PNG)
+![Screen shot of code-quiz with results](assets/images/scores.PNG)
 
-![Screen shot of code-quiz with clear or go back](images/submit.PNG)
+![Screen shot of code-quiz with clear or go back](assets/images/submit.PNG)
 
 This is my password generator that operates after I added javascript to the webpage.
 
