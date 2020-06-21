@@ -138,15 +138,13 @@ function list(){
         console.log(highScores)
         newLi.textContent = highScores[i].initials + " - " + highScores[i].score;
         document.getElementById("scoreList").appendChild(newLi);
-
-        //newLi.textContent = highScores[i].initials + " - " + highScores[i].score
-        //document.getElementById("scores").append(highScores[i].initials + " - " + highScores[i].score);
     }
     
     // click handlers for restart and clearing scoreboard
     document.getElementById("clearBtn").addEventListener("click", function () {
         event.preventDefault();
         localStorage.clear();
+        document.getElementById("scoreList").textContent = "";
     });
     
     document.getElementById("goBackBtn").addEventListener("click", function () {
@@ -181,4 +179,17 @@ document.getElementById("viewScores").addEventListener("click", function(e){
 
     home.classList.add("d-none");
     addScore();
+    list();
+
+    // click handlers for restart and clearing scoreboard
+    document.getElementById("clearBtn").addEventListener("click", function () {
+        event.preventDefault();
+        localStorage.clear();
+        document.getElementById("scoreList").textContent = "";
+    });
+    
+    document.getElementById("goBackBtn").addEventListener("click", function () {
+        event.preventDefault();
+        window.location.reload();
+    });
 });
